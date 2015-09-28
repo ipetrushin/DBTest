@@ -32,14 +32,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/noteText"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/tapButton"
-        android:layout_below="@+id/recordscount" />
+        android:layout_below="@+id/recordscount"
+        android:layout_alignEnd="@+id/note"
+        android:layout_toEndOf="@+id/displayid" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="id"
+        android:text="id      "
         android:id="@+id/id"
         android:layout_below="@+id/noteText"
         android:layout_alignParentStart="true" />
@@ -65,4 +65,16 @@
         android:layout_alignTop="@+id/tapButton"
         android:layout_toEndOf="@+id/tapButton"
         android:onClick="clearClick"/>
+
+    <TextView
+        android:layout_width="42pt"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/displayid"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/noteText"
+        android:text="  "
+        android:layout_alignEnd="@+id/id"
+        android:layout_alignTop="@+id/noteText" />
+
 </RelativeLayout>
