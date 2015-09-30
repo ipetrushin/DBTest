@@ -2,6 +2,7 @@ package com.example.gizmo.dbtest;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -37,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
     ListView lv;
     SimpleCursorAdapter scAdapter;
     Cursor c;
+
+    // constants for broadcast messages
+    public static final String NOTE_ADDED = "com.example.gizmo.dbtest.NOTE_ADDED";
+    //public static final String ALARM_MESSAGE = ;
 
     // arrays for binding DB and ListView
     String[] headers = {"_id", "timestamp", "note"};
@@ -104,6 +109,13 @@ public class MainActivity extends AppCompatActivity {
         }
         c.requery(); // refresh listview
         recordscount.setText("Records in table: " + Integer.toString(c.getCount()));
+
+        // sending broadcast message
+        Intent intent = new Intent();
+        intent.setAction(NOTE_ADDED);
+        intent.putExtra("com.example.gizmo.dbtest.Message", note.getText().toString());
+        intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+        sendBroadcast(intent);
     }
 
     public void clearClick(View v)
